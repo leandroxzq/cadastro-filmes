@@ -20,8 +20,8 @@ def criaArquivo(nomeArquivo):
 
 def existeArquivo(nomeArquivo):
     try:
-        a = open(nomeArquivo, 'rt')
-        a.close()
+        with open(nomeArquivo, 'rt'):
+            pass
     except FileNotFoundError:
         return False
     else:
@@ -36,11 +36,12 @@ def cadastrarFilme(nomeArquivo, nomeFilme, anoFilme):
 
 def listarArquivo(nomeArquivo):
     try:
-        a = open(nomeArquivo, 'rt')
+        with open(nomeArquivo, 'rt') as Arquivo:
+            conteudo = Arquivo.read()
+            print(conteudo)
     except:
         print("Erro ao ler o arquivo")
-    else:
-        print(a.read())
+    
 
 Arquivo = 'Filmes.txt'
 if existeArquivo(Arquivo):
